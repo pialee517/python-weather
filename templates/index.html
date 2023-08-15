@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container" style="background:url({{ bgImg }}) no-repeat fixed center center/cover;">
+    <div id='content'>
+        {% include 'components/header.html' %}
+        {% include "components/search.html" %}
+        {% include "components/result.html" %}
+    </div>
+    {% include 'components/footer.html' %}
+</div>
+{% endblock %}

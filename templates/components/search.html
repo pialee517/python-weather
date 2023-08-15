@@ -1,0 +1,17 @@
+<form id="search_form" method="POST">
+    {% if days > 0 %}
+    <select id="select_days" name="days">
+        <option value=1 {% if days == 1 %}selected{% endif %}>1 day</option>
+        <option value=2 {% if days == 2 %}selected{% endif %}>2 days</option>
+        <option value=3 {% if days == 3 %}selected{% endif %}>3 days</option>
+    </select>
+    {% endif %}
+    <div id="search_bar">
+        <img src="{{ url_for('static', filename='assets/search-svgrepo-com.svg') }}" width="20px" height="20px"/>
+        <input type="text" name='location' id='txt_search' placeholder="City" value="{{ txt_search }}" autocomplete="false"/>
+        <button type="button" id="btn_clear">
+            <img src="{{ url_for('static', filename='assets/close-circle-svgrepo-com_light.svg') }}" width="20px" height="20px"/>
+        </button>
+    </div>
+    <input type="button" name="btn_submit" id="btn_submit" value="search"/>
+</form>

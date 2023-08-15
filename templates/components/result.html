@@ -1,0 +1,84 @@
+<div id="result" class="text_center">
+    {% if result %}
+    {% if days == 0 %}
+     <p class="white">{{ result['location']['name'] }}, {{ result['location']['country'] }}</p>
+    <div class="row py_space background rounded my_space">
+        <div class="column">
+           <p class="bold">Today</p>
+            <img class='center' src="{{ result['current']['condition']['icon'] }}" width="50px" height="50px"/>
+            <p class="emphasize bold blue">{{ result['current']['temp_c'] }}<span class="small">&nbsp;&#8451;</span></p>
+        </div>
+        <div class="column">
+            <div>Feels Like</div>
+            <div><span class="emphasize">{{ result['current']['feelslike_c'] }}</span><span class="small">&nbsp;&#8451;</span></div>
+        </div>
+        <div class="column">
+            <div>Wind</div>
+            <div><span class="emphasize">{{ result['current']['wind_kph'] }}</span><span class="small">&nbsp;km/h</span></div>
+        </div>
+        <div class="column">
+            <div>Humidity</div>
+            <div><span class="emphasize">{{ result['current']['humidity'] }}</span><span class="small">&nbsp;km</span></div>
+        </div>
+        <div class="column">
+            <div>Visibility</div>
+            <div><span class="emphasize">{{ result['current']['vis_km'] }}</span><span class="small">&nbsp;km</span></div>
+        </div>
+    </div>
+    <div class="row py_space background rounded my_space">
+        <div class="column">
+            <div><span class="small">High:&nbsp;</span><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['maxtemp_c'] }}</span><span class="small">&nbsp;&#8451;</span></div>
+            <div><span class="small">Low:&nbsp;</span><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['mintemp_c'] }}</span><span class="small">&nbsp;&#8451;</span></div>
+        </div>
+        <div class="column">
+            <div>Max Wind</div>
+            <div><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['maxwind_kph'] }}</span><span class="small">&nbsp;km/h</span></div>
+        </div>
+        <div class="column">
+            <div>Total Precipitation</div>
+            <div><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['totalprecip_mm'] }}</span><span class="small">&nbsp;mm</span></div>
+        </div>
+        <div class="column">
+            <div>Total Snow</div>
+            <div><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['totalsnow_cm'] }}</span><span class="small">&nbsp;cm</span></div>
+        </div>
+        <div class="column">
+            <div>Chance of Rain</div>
+            <div><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['daily_chance_of_snow'] }}</span><span class="small">&nbsp;%</span></div>
+        </div>
+    </div>
+    {% endif %}
+    {% if not days == 0 %}
+     <p class="white">{{ result['location']['name'] }}, {{ result['location']['country'] }}</p>
+    {% for day in result['forecast']['forecastday'] %}
+    <div class="row py_space background rounded my_space">
+        <div class="column">
+            <p class="bold">{{ day['date'] }}</p>
+            <img class='center' src="{{ day['day']['condition']['icon'] }}" width="50px" height="50px"/>
+            <p class="emphasize bold blue">{{ day['day']['avgtemp_c'] }}<span class="small">&nbsp;&#8451;</span></p>
+        </div>
+        <div class="column">
+            <div>Max Wind</div>
+            <div><span class="emphasize">{{ day['day']['maxwind_mph'] }}</span><span class="small">&nbsp;km/h</span></div>
+        </div>
+        <div class="column">
+            <div>Humidity</div>
+            <div><span class="emphasize">{{ day['day']['avghumidity'] }}</span><span class="small">&nbsp;km</span></div>
+        </div>
+        <div class="column">
+            <div>Visibility</div>
+            <div><span class="emphasize">{{ day['day']['avgvis_km'] }}</span><span class="small">&nbsp;km</span></div>
+        </div>
+        <div class="column">
+            <div><span class="small">High:&nbsp;</span><span class="emphasize">{{ day['day']['maxtemp_c'] }}</span><span class="small">&nbsp;&#8451;</span></div>
+            <div><span class="small">Low:&nbsp;</span><span class="emphasize">{{ day['day']['mintemp_c'] }}</span><span class="small">&nbsp;&#8451;</span></div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+
+    {% if result == None %}
+    <p>No Result</p>
+    {% endif %}
+</div>
