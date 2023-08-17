@@ -26,6 +26,16 @@
         </div>
     </div>
     <div class="row py_space background rounded my_space">
+        {% for i in range(5, result['forecast']['forecastday'][0]['hour']|length, 6) %}
+         <div class="column">
+             {% set text = ['Morning', 'Afternoon', 'Evening', 'Overnight'] %}
+            <p class="bold">{{ text[ ((i-5)/6)|int ] }}</p>
+                <img class='center' src="{{ result['forecast']['forecastday'][0]['hour'][i]['condition']['icon'] }}" width="50px" height="50px"/>
+             <p class="bold"><span class="small">Rain: </span>{{ result['forecast']['forecastday'][0]['hour'][i]['chance_of_rain'] }}<span class="small">&nbsp;%</span></p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row py_space background rounded my_space">
         <div class="column">
             <div><span class="small">High:&nbsp;</span><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['maxtemp_c'] }}</span><span class="small">&nbsp;&#8451;</span></div>
             <div><span class="small">Low:&nbsp;</span><span class="emphasize">{{ result['forecast']['forecastday'][0]['day']['mintemp_c'] }}</span><span class="small">&nbsp;&#8451;</span></div>

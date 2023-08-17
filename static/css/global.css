@@ -16,6 +16,7 @@
 }
 body{
     width:100vw;
+
 }
 a, button{
     cursor:pointer;
@@ -23,8 +24,8 @@ a, button{
 }
 /* body > container(nav, content) */
 .container{
-    height:110%;
     width:100%;
+    min-height: 100vh;
     background-attachment: fixed;
     z-index:-1;
 }
@@ -53,6 +54,9 @@ a, button{
     background-attachment: fixed;
     margin:0 auto;
     padding:var(--m);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 /* nav */
 #nav ul{
@@ -147,7 +151,6 @@ a, button{
 #result{
     padding: var(--m) 0;
     overflow-y: scroll;
-    min-height:600px;
 }
 .background{
     background:var(--light-color);
@@ -205,6 +208,7 @@ footer{
     background:transparent;
     padding:calc(3 * var(--s));
     text-align:center;
+    margin-top:auto;
 }
 footer div{
     padding-top:2rem;
